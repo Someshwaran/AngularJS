@@ -14,7 +14,6 @@
         <div class="row">
             <div class="col">
                 <h1>Blog Post Content</h1>
-                <input type="button" ng-click="post.showAlert()" class="btn btn-primary" value="Click Me" />
             </div>
         </div>
         <div class="row">
@@ -27,6 +26,7 @@
                 <p>{{ topic.date_posted }}</p>
                 <h5>Content</h5>
                 <p>{{ topic.content }}</p>
+                <input type="button" ng-click="post.showAlert(topic)" class="btn btn-primary" value="Read more" />
             </div>
         </div>
     </div>
