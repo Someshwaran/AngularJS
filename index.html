@@ -45,36 +45,22 @@
                             <span ng-hide="book.status">{{ $index + 1 }}</span>
                         </td>
                         <td>
-                            <span ng-hide="book.status">{{ book.name }}</span>
+                            <span ng-dblclick="phone.toggleEdit(book.id, $index)" ng-hide="book.status">{{ book.name }}</span>
                             <input ng-show="book.status" type="text" ng-model="book.name" />
                         </td>
                         <td>
-                            <span ng-hide="book.status">{{ book.number }}</span>
+                            <span ng-dblclick="phone.toggleEdit(book.id, $index)" ng-hide="book.status">{{ book.number }}</span>
                             <input ng-show="book.status" type="text" ng-model="book.number" />
                         </td>
                         <td>
-                            <input ng-hide="book.status" type="button" value="edit" ng-click="phone.toggleEdit($index)" class="btn btn-sm btn-info" />
-                            <input ng-show="book.status" type="button" value="save" ng-click="phone.toggleEdit($index)" class="btn btn-sm btn-warn" />
+                            <input ng-hide="book.status" type="button" value="edit" ng-click="phone.toggleEdit(book.id, $index)" class="btn btn-sm btn-info" />
+                            <input ng-show="book.status" type="button" value="save" ng-click="phone.updateBook(book.id, $index)" class="btn btn-sm btn-warn" />
                         </td>
                         <td>
-                            <input type="button" value="delete" ng-click="phone.deleteContact($index)" class="btn btn-sm btn-danger" />
+                            <input type="button" value="delete" ng-click="phone.deleteContact(book.id, $index)" class="btn btn-sm btn-danger" />
                         </td>
                     </tr>
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>
-                            <input type="text" ng-model="phone.rec.name" />
-                        </td>
-                        <td>
-                            <input type="text" ng-model="phone.rec.number" />
-                        </td>
-                        <td>
-                            <input type="button" value="Add New" class="btn btn-primary" ng-click="phone.addNewPhone()" /> </td>
-                        <td>&nbsp;</td>
-                    </tr>
-                </tfoot>
             </table>
         </div>
     </div>
