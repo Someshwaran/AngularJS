@@ -1,46 +1,38 @@
 (function() {
     var app = angular.module('blog', []);
 
-    app.controller("PostController", function() {
-        console.log("Post Invoked");
+    app.controller("PhoneController", function() {
+        
+        var contacts = [
+            {'name': 'Name 10', 'number': '+91-9876543210'},
+            {'name': 'Name 11', 'number': '+91-9876543211'},
+            {'name': 'Name 12', 'number': '+91-9876543212'},
+            {'name': 'Name 13', 'number': '+91-9876543213'},
+            {'name': 'Name 14', 'number': '+91-9876543214'},
+            {'name': 'Name 15', 'number': '+91-9876543215'}
+        ]
 
-        var post = [ {
-            'title': 'MY First Post',
-            'author': 'Guest',
-            'content': 'This is my first post data using JS',
-            'date_posted': '12-05-2018'
-            }, {
-                'title': 'MY Second Post',
-                'author': 'Guest',
-                'content': 'This is my second post data using JS',
-                'date_posted': '16-05-2018'
-            }, {
-                'title': 'MY First Post',
-                'author': 'Guest',
-                'content': 'This is my first post data using JS',
-                'date_posted': '12-05-2018'
-            }, {
-                'title': 'MY First Post',
-                'author': 'Guest',
-                'content': 'This is my first post data using JS',
-                'date_posted': '12-05-2018'
-            }, {
-                'title': 'MY First Post',
-                'author': 'Guest',
-                'content': 'This is my first post data using JS',
-                'date_posted': '12-05-2018'
-            }, {
-                'title': 'MY First Post',
-                'author': 'Guest',
-                'content': 'This is my first post data using JS',
-                'date_posted': '12-05-2018'
+        this.books = contacts;
+
+        this.toggleEdit = function(index) {
+            if(this.books[index].status) {
+                this.books[index].status = false;
+            } else {
+                this.books[index].status = true;
+                //Do update by AJAX
             }
-        ];
+        };
 
-        this.topics = [post[0], post[1]];
+        //var cur = this;
+        this.deleteContact = function(index) {
+            //console.log(cur.books[index])
+            //Do delete by AJAX
+            this.books.splice(index, 1);
+        };
 
-        this.showAlert = function(post) {
-            console.log(post)
+        this.addNewPhone = function() {
+            this.books.push(this.rec);
+            this.rec = {}
         };
 
     });

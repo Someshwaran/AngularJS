@@ -10,24 +10,72 @@
 </head>
 
 <body>
-    <div class="container" ng-controller="PostController as post">
+    <div class="container" ng-controller="PhoneController as phone">
         <div class="row">
             <div class="col">
-                <h1>Blog Post Content</h1>
+                <h1>Phonebook Content</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-6" ng-repeat="topic in post.topics">
-                <h5>Title</h5>
-                <p>{{ topic.title }}</p>
-                <h5>Author</h5>
-                <p>{{ topic.author }}</p>
-                <h5>Date Posted</h5>
-                <p>{{ topic.date_posted }}</p>
-                <h5>Content</h5>
-                <p>{{ topic.content }}</p>
-                <input type="button" ng-click="post.showAlert(topic)" class="btn btn-primary" value="Read more" />
-            </div>
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                            <input type="text" ng-model="phone.rec.name" />
+                        </td>
+                        <td>
+                            <input type="text" ng-model="phone.rec.number" />
+                        </td>
+                        <td>
+                            <input type="button" value="Add New" class="btn btn-primary" ng-click="phone.addNewPhone()" /> </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Name</th>
+                        <th>Contact Number</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="book in phone.books">
+                        <td>
+                            <span ng-hide="book.status">{{ $index + 1 }}</span>
+                        </td>
+                        <td>
+                            <span ng-hide="book.status">{{ book.name }}</span>
+                            <input ng-show="book.status" type="text" ng-model="book.name" />
+                        </td>
+                        <td>
+                            <span ng-hide="book.status">{{ book.number }}</span>
+                            <input ng-show="book.status" type="text" ng-model="book.number" />
+                        </td>
+                        <td>
+                            <input ng-hide="book.status" type="button" value="edit" ng-click="phone.toggleEdit($index)" class="btn btn-sm btn-info" />
+                            <input ng-show="book.status" type="button" value="save" ng-click="phone.toggleEdit($index)" class="btn btn-sm btn-warn" />
+                        </td>
+                        <td>
+                            <input type="button" value="delete" ng-click="phone.deleteContact($index)" class="btn btn-sm btn-danger" />
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                            <input type="text" ng-model="phone.rec.name" />
+                        </td>
+                        <td>
+                            <input type="text" ng-model="phone.rec.number" />
+                        </td>
+                        <td>
+                            <input type="button" value="Add New" class="btn btn-primary" ng-click="phone.addNewPhone()" /> </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
     </div>
     <script src="lib/angular.js"></script>
