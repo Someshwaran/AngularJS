@@ -37,7 +37,12 @@
             }
         ];
 
-        this.topics = post;
+        this.topics = [post[0], post[1]];
+
+        this.showAlert = function() {
+            console.log("Show Alert called")
+        };
+
     });
 
 })();

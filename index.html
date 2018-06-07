@@ -10,13 +10,14 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" ng-controller="PostController as post">
         <div class="row">
             <div class="col">
                 <h1>Blog Post Content</h1>
+                <input type="button" ng-click="post.showAlert()" class="btn btn-primary" value="Click Me" />
             </div>
         </div>
-        <div class="row" ng-controller="PostController as post">
+        <div class="row">
             <div class="col-6" ng-repeat="topic in post.topics">
                 <h5>Title</h5>
                 <p>{{ topic.title }}</p>
