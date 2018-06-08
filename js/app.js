@@ -1,5 +1,23 @@
 (function () {
-    var app = angular.module('blog', []);
+    var app = angular.module('blog', ['ngRoute']);
+
+    app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+        
+        $locationProvider.hashPrefix("");
+        $routeProvider
+        .when("/home", { 
+            templateUrl: "templates/home.html",
+            controller: ['$http', function($http) {
+                this.msg = "Info"
+            }],
+            controllerAs: 'hm'
+        })
+        .when("/features", { templateUrl: "templates/features.html" })
+        .when("/pricing", { template: "<h1>Price COntent</h1>" })
+        .otherwise({
+            redirectTo: "/home"
+        })
+    }])
 
     app.controller("PhoneController", ['$http', function ($http) {
         this.addReview = function() {
