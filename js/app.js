@@ -1,6 +1,17 @@
 (function () {
     var app = angular.module('blog', ['ngRoute']);
 
+    app.directive('phoneInfo', function() {
+        return {
+            restrict: "AE",
+            templateUrl: "templates/phone-information.html",
+            controller: ['$http', function($http) {
+                this.message = "Dummy Content"
+            }],
+            controllerAs: 'phone'
+        }
+    });
+
     app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
         
         $locationProvider.hashPrefix("");
