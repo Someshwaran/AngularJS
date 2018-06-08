@@ -2,15 +2,26 @@
     var app = angular.module('blog', []);
 
     app.controller("PhoneController", ['$http', function ($http) {
-        this.tab = 0;
-
-        this.setSelected = function(index) {
-            this.tab = index
+        this.addReview = function() {
+            this.reviews.push(this.newr)
+            this.newr = {}
         }
+        this.newr = {
 
-        this.isSelected = function(index) {
-            return this.tab == index
         }
+        this.reviews = [{
+            name: 'Guest 1',
+            rating: 4,
+            description: 'Good'
+        },{
+            name: 'Guest 2',
+            rating: 2,
+            description: 'Not Bad'
+        },{
+            name: 'Guest 3',
+            rating: 3,
+            description: 'OK'
+        }]
     }]);
 
 })();

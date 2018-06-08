@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home Page</title>
     <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/main.css" />
 </head>
 
 <body>
@@ -17,19 +18,44 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <div class="btn-group" role="group">
-                    <button type="button" ng-class="{active:phone.isSelected(1)}" ng-click="phone.setSelected(1)" class="btn btn-secondary">Tab 1</button>
-                    <button type="button" ng-class="{active:phone.isSelected(2)}" ng-click="phone.setSelected(2)" class="btn btn-secondary">Tab 2</button>
-                    <button type="button" ng-class="{active:phone.isSelected(3)}" ng-click="phone.setSelected(3)" class="btn btn-secondary">Tab 3</button>
+            <form name="reviewForm" ng-submit="reviewForm.$valid && phone.addReview()" novalidate>
+                <div class="row">
+                    <div class="col-12">
+                        <label>Choose Rating</label>
+                        <select  class="form-control" ng-model="phone.newr.rating" required>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label>Review</label>
+                        <textarea class="form-control" required ng-model="phone.newr.description"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <label>Name</label>
+                        <input class="form-control" required ng-model="phone.newr.name" />
+                    </div>
+                    <div class="col-4">
+                        <input class="btn btn-primary" type="submit" />
+                    </div>
                 </div>
-                <div class="col-12">
-                    <p ng-show="phone.isSelected(1)">This is content of tab 1</p>
-                    <p ng-show="phone.isSelected(2)">This is content of tab 2</p>
-                    <p ng-show="phone.isSelected(3)">This is content of tab 3</p>
+            </form>
+        </div>
+        <div class="row" ng-repeat="review in phone.reviews">
+            <div class="col-12">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ review.rating }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@{{ review.name }}</h6>
+                        <p class="card-text">{{ review.description }}</p>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
     <script src="lib/angular.js"></script>
     <script src="js/app.js"></script>
